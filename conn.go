@@ -2,11 +2,12 @@ package websocket
 
 import (
 	"encoding/json"
-	"github.com/gobwas/ws"
 	"net"
 	"net/url"
 	"sync"
 	"time"
+
+	"github.com/gobwas/ws"
 )
 
 // Conn websocket connection
@@ -59,7 +60,7 @@ func (c *Conn) Write(h ws.Header, b []byte) error {
 	c.mu.Lock()
 	defer c.mu.Unlock()
 
-	_ = c.conn.SetWriteDeadline(time.Now().Add(15000 * time.Millisecond))
+	_ = c.conn.SetWriteDeadline(time.Now().Add(60000 * time.Millisecond))
 	err := ws.WriteHeader(c.conn, h)
 	if err != nil {
 		return err
