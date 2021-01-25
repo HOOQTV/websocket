@@ -1,4 +1,4 @@
-module github.com/pkgz/websocket
+module github.com/hooqv/websocket
 
 go 1.12
 
